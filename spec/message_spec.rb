@@ -25,5 +25,12 @@ describe Fluffy::Message do
       }
     end
   end
+
+  describe '.generate_id' do
+    it 'generates random values' do
+      Fluffy::Message.generate_id.should_not be_nil
+      Fluffy::Message.generate_id.should_not == Fluffy::Message.generate_id
+    end
+  end
 end
 

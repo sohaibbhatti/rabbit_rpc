@@ -10,7 +10,7 @@ module Fluffy
       @args        = args
     end
 
-    # Squeezes and serializes the RPC method name and arguments 
+    # Squeezes and serializes the RPC method name and arguments
     #
     # Returns the packed and serialized string
     def pack
@@ -24,6 +24,10 @@ module Fluffy
     # Returns a Hash
     def self.unpack(message)
       MessagePack.unpack message
+    end
+
+    def self.generate_id
+      SecureRandom.uuid
     end
 
     private
