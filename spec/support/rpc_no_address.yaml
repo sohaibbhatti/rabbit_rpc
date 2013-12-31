@@ -1,0 +1,4 @@
+UserService:
+  methods:
+    User: create, read, delete
+    Auth: authorize

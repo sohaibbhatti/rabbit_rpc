@@ -1,0 +1,5 @@
+UserService:
+  address: amqp:://localhost:5672
+  methods:
+    User: create, read, delete
+    Auth: authorize
