@@ -21,7 +21,8 @@ module Fluffy
     #
     # Returns nothing
     def parse
-      @service_name, @method_name = @message['method'].split('.')
+      method = @message.is_a?(Fluffy::Message) ? @message.method_name : @message['method']
+      @service_name, @method_name = method.split('.')
     end
 
     # Public: Identifies whether a wait for a response is expected

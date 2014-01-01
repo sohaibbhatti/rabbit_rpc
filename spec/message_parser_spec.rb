@@ -43,5 +43,8 @@ describe Fluffy::MessageParser do
       example_two.parse
       example_two.method_name.should == 'one_way_delete'
     end
+
+    # Test case for message class and hash
+    # Invalid format?
   end
 end

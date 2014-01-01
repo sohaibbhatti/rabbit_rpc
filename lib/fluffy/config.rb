@@ -71,6 +71,11 @@ module Fluffy
 
                 # Send the request message here
                 Fluffy::Message.new("#{klass_name}Service.#{method_name}", args)
+
+                #Fluffy::SynchronousConnection.new(
+                  #service_name,
+                  #"#{service_name}.callback",
+                  #@@service_address[service_name]).publish!(Fluffy::Message.new("#{klass_name}Service.#{method_name}", args))
               end
             end
           end
