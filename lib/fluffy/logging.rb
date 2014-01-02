@@ -16,7 +16,7 @@ module Fluffy
 
       # TODO: logger options
       def log_exception(ex)
-        Fluffy:Logging.log_exception(ex)
+        Fluffy::Logging.log_exception(ex)
       end
     end
 

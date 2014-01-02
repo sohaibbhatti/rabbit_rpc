@@ -14,7 +14,6 @@ describe Fluffy::SynchronousConnection do
     end
 
     it 'sends a message to the relevant queue' do
-      #connection.stub(:exchange).and_return exchange
       exchange.should_receive(:publish).with(
         message.pack,
         routing_key: 'foo',
