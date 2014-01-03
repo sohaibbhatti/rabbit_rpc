@@ -24,6 +24,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "msgpack", "~> 0.5.8"
   spec.add_dependency "active_support"
   spec.add_dependency "bunny"
+  spec.add_dependency "amqp"
 
   spec.add_development_dependency "rspec", "~> 2.14.1"
+  spec.add_development_dependency "evented-spec"
 end

@@ -2,6 +2,8 @@ module Fluffy
   class RequestHandler
     include Logging
 
+    attr_reader :one_way
+
     def initialize(serialized_message)
       @message = Message.unpack serialized_message
     end
@@ -9,6 +11,8 @@ module Fluffy
     def execute
       parser = MessageParser.new(@message)
       parser.parse
+
+      @one_way = parser.one_way?
 
       logger.info "Received message #{@message}"
 
