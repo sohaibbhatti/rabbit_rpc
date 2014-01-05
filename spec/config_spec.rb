@@ -27,7 +27,10 @@ describe Fluffy::Config do
       end
 
       it 'successfully encodes the messages with the proper arguments' do
-        Fluffy::Message.should_receive(:new).with('AuthService.authorize', ['omg', 'this', 'works']). \
+        # Do not wait for response
+        Fluffy::SynchronousConnection.any_instance.stub(:publish!).and_return(true)
+
+        Fluffy::Message.should_receive(:new).with('AuthService.authorize', 'omg', 'this', 'works'). \
           and_call_original
         Fluffy::Client::UserService::Auth.authorize 'omg', 'this', 'works'
       end
