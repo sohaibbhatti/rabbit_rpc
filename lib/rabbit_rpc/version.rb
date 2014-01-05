@@ -1,3 +1,3 @@
-module Fluffy
+module RabbitRPC
   VERSION = "0.0.1"
 end

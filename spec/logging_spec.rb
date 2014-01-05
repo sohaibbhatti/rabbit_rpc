@@ -1,9 +1,9 @@
-require 'fluffy'
+require 'rabbit_rpc'
 
-describe Fluffy::Logging do
+describe RabbitRPC::Logging do
   let(:random_class) do
     class RandomClass
-      include Fluffy::Logging
+      include RabbitRPC::Logging
     end
   end
 

@@ -1,4 +1,4 @@
-module Fluffy
+module RabbitRPC
   class MessageParserException; end
 
   class MessageParser
@@ -21,7 +21,7 @@ module Fluffy
     #
     # Returns nothing
     def parse
-      method = @message.is_a?(Fluffy::Message) ? @message.method_name : @message['method']
+      method = @message.is_a?(RabbitRPC::Message) ? @message.method_name : @message['method']
       @service_name, @method_name = method.split('.')
     end
 

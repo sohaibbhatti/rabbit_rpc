@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'fluffy/version'
+require 'rabbit_rpc/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "fluffy"
-  spec.version       = Fluffy::VERSION
+  spec.name          = "rabbit_rpc"
+  spec.version       = RabbitRPC::VERSION
   spec.authors       = ["Sohaib Bhatti"]
   spec.email         = ["sohaibbbhatti@gmail.com"]
   spec.description   = %q{Framework for developing services and workesrs using RabbitMQ}
@@ -22,9 +22,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
 
   spec.add_dependency "msgpack", "~> 0.5.8"
-  spec.add_dependency "active_support"
-  spec.add_dependency "bunny"
-  spec.add_dependency "amqp"
+  spec.add_dependency "active_support", "~> 3.0.0"
+  spec.add_dependency "bunny", "~> 0.10.8"
+  spec.add_dependency "amqp", "~> 1.0.4"
 
   spec.add_development_dependency "rspec", "~> 2.14.1"
   spec.add_development_dependency "evented-spec"

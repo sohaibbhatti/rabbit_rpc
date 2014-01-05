@@ -1,4 +1,4 @@
-module Fluffy
+module RabbitRPC
   class RequestHandler
     include Logging
 

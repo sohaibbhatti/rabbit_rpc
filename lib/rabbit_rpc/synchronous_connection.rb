@@ -3,7 +3,7 @@ require 'active_support/core_ext/object/try'
 
 #TODO: Implement callback queue timeout
 #TODO: RabbitMQ connection options
-module Fluffy
+module RabbitRPC
   # Connects to RabbitMQ for blocking RPC calls.
   # Wait for a response when querying other services
   class SynchronousConnection

@@ -1,6 +1,6 @@
 require 'msgpack'
 
-module Fluffy
+module RabbitRPC
   class Message
 
     attr_reader :method_name, :args

@@ -1,10 +1,10 @@
-require 'fluffy'
+require 'rabbit_rpc'
 require 'evented-spec'
 
-describe Fluffy::Connection do
+describe RabbitRPC::Connection do
   include EventedSpec::EMSpec
-  let(:connection) { Fluffy::Connection.new('UserService', 'amqp://localhost:5672', 5) }
-  let(:sync_connection) { Fluffy::SynchronousConnection.new('UserService', 'UserService.callback', 'amqp://localhost:5672') }
+  let(:connection) { RabbitRPC::Connection.new('UserService', 'amqp://localhost:5672', 5) }
+  let(:sync_connection) { RabbitRPC::SynchronousConnection.new('UserService', 'UserService.callback', 'amqp://localhost:5672') }
   let(:exchange) { double 'exchange', publish: true }
 
   it 'connects to the the specified rabbitMQ queue' do
@@ -16,10 +16,10 @@ describe Fluffy::Connection do
   end
 
   it 'attempts to execute received messages' do
-    Fluffy::SynchronousConnection.new('UserService', 'UserService.callback', 'amqp://localhost:5672').publish!(Fluffy::Message.new('User.one_way_create'))
+    RabbitRPC::SynchronousConnection.new('UserService', 'UserService.callback', 'amqp://localhost:5672').publish!(RabbitRPC::Message.new('User.one_way_create'))
 
     em do
-      Fluffy::RequestHandler.should_receive(:new).at_least(1).times.with(Fluffy::Message.new('User.one_way_create').pack).and_call_original
+      RabbitRPC::RequestHandler.should_receive(:new).at_least(1).times.with(RabbitRPC::Message.new('User.one_way_create').pack).and_call_original
       connection.listen!
       done(0.5)
     end
@@ -28,7 +28,7 @@ describe Fluffy::Connection do
   context 'when the client expects a response' do
 
     it 'sends a response to the callback queue' do
-      Fluffy::Message.stub(:generate_id).and_return 'omg'
+      RabbitRPC::Message.stub(:generate_id).and_return 'omg'
       ::AMQP::Channel.any_instance.stub(:default_exchange).and_return exchange
 
       send_message_expecting_response
@@ -43,7 +43,7 @@ describe Fluffy::Connection do
 
   context 'when the client does not expect a response' do
     it 'does not send a response to the callback queue' do
-      Fluffy::Message.stub(:generate_id).and_return 'omg'
+      RabbitRPC::Message.stub(:generate_id).and_return 'omg'
       ::AMQP::Channel.any_instance.stub(:default_exchange).and_return exchange
 
       send_one_way_message
@@ -59,13 +59,13 @@ describe Fluffy::Connection do
   # Disables the client blocking wait for receiving the message
   # on the callback queue
   def send_message_expecting_response
-    message = Fluffy::Message.new('User.create')
+    message = RabbitRPC::Message.new('User.create')
     sync_connection.stub(:wait_for_response?).and_return(false)
     sync_connection.publish! message
   end
 
   def send_one_way_message
-    message = Fluffy::Message.new('User.one_way_create')
+    message = RabbitRPC::Message.new('User.one_way_create')
     sync_connection.publish! message
   end
 end

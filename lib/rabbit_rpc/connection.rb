@@ -1,7 +1,7 @@
 require 'amqp'
 
 #TODO: RabbitMQ connection options
-module Fluffy
+module RabbitRPC
   class Connection
     PREFETCH_DEFAULT = 5
 

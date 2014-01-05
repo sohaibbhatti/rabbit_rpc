@@ -1,6 +1,6 @@
 require 'logger'
 
-module Fluffy
+module RabbitRPC
 
   module Logging
 
@@ -11,12 +11,12 @@ module Fluffy
 
     module Methods
       def logger
-        Fluffy::Logging.logger
+        RabbitRPC::Logging.logger
       end
 
       # TODO: logger options
       def log_exception(ex)
-        Fluffy::Logging.log_exception(ex)
+        RabbitRPC::Logging.log_exception(ex)
       end
     end
 

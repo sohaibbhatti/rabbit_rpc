@@ -1,11 +1,11 @@
-require 'fluffy'
+require 'rabbit_rpc'
 
-describe Fluffy::SynchronousConnection do
+describe RabbitRPC::SynchronousConnection do
   describe '#publish!' do
-    let(:connection)      { Fluffy::SynchronousConnection.new('foo', 'bar', 'amqp:://localhost:5672') }
+    let(:connection)      { RabbitRPC::SynchronousConnection.new('foo', 'bar', 'amqp:://localhost:5672') }
     let(:exchange)        { double 'exchange', publish: true }
-    let(:message)         { Fluffy::Message.new 'User.create', 'bar' }
-    let(:one_way_message) { Fluffy::Message.new 'User.one_way_create', 'bar' }
+    let(:message)         { RabbitRPC::Message.new 'User.create', 'bar' }
+    let(:one_way_message) { RabbitRPC::Message.new 'User.one_way_create', 'bar' }
     let(:queue)           { double 'queue', subscribe: true }
 
     before do

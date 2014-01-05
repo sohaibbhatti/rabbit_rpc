@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in fluffy.gemspec
+# Specify your gem's dependencies in caerbannog.gemspec
 gemspec
