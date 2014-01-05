@@ -102,6 +102,10 @@ Rabbit-RPC relies on some conventions for it to work.
   => nil
 ```
 
+## Example
+
+A sample implementation of a service and RPC invocation can be seen [here.](https://github.com/sohaibbhatti/rabbit_rpc_example)
+
 ## Contributing
 
 As with all gems in their infancy. Rabbit-RPC is in a skeletal state. Some

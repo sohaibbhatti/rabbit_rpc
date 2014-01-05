@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = RabbitRPC::VERSION
   spec.authors       = ["Sohaib Bhatti"]
   spec.email         = ["sohaibbbhatti@gmail.com"]
-  spec.description   = %q{Framework for developing services and workesrs using RabbitMQ}
+  spec.description   = %q{Framework for developing services and workers using RabbitMQ}
   spec.summary       = %q{Ruby RabbitMQ framework}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/sohaibbhatti/rabbit_rpc"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
